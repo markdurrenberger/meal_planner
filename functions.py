@@ -186,6 +186,8 @@ def view_meals():
         main_menu()
     elif choice -1:
         del_meal()
+    else:
+        view_meals()
     ### Need to create this function, will take the meal number from above and return details of meal in a nice format
     # else:
         # meal_details(choice-1)
@@ -223,7 +225,7 @@ def del_meal():
 
     main_menu()
 
-def meal_details(meal_num)
+def meal_details(meal_num):
     '''This function takes in the number of a meal (from the menus), and returns the details of the meal in a 
     nice, readable format. Ingredients first followed by instructions.'''
 
