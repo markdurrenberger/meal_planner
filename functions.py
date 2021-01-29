@@ -45,7 +45,7 @@ What do you want to do? '''))
 # Option 1 - Get Meal Recommendation
 def get_recommendation():
     import os
-    os.sytem('cls')
+    os.system('cls')
 
     print('Option 1 - Get Meal Recommendation')
 
@@ -56,19 +56,65 @@ def get_recommendation():
     f.close()
 
     # Get user inputs for types of meals
-    protein = input("What protein would you like? ").lower()
+    protein = input("What protein would you like? ").lower().strip()
 
-    ### I'll figure out the protein part first, then expand with these lines
+    ### I'll figure out the protein part first, then expand to cuisines or tags
+    # cuisine =
+    # tag =
+
+    # Create a subset of all the meals that contain the specified protein
     subset = []
     for meal in meals:
-
-        # replace chicken with the protein variable from user input
         for ingredient in meal['ingredients'].keys():
             if protein in ingredient:
                 subset.append(meal)
                 break
             else:
                 continue
+
+    # While loop to keep offering meals until user accepts one or run out of options
+    import random
+    #For changing display message
+    ticker = 0
+
+    while True:
+        # Get initial recommendation
+        recommendation = random.choice(subset)
+
+        # Remove that meal from subset
+        subset.remove(recommendation)
+
+        # Display choice and ask for confirmation
+        os.system('cls')
+        if ticker == 0:
+            print("A great meal with {} is: {}".format(protein, recommendation['name']))
+        elif not subset:
+            print("The last option with {} is: {}".format(protein, recommendation['name']))
+        else:
+            print("Another great meal with {} is: {}".format(protein, recommendation['name']))
+        print("-----------------------------------------------------------")
+        print("Do you want to make that meal (y) or get another option(n)?")
+        confirm = input("Enter 'y' or 'n': ").lower().strip()
+
+        # Either keep loop going, or end it
+        if confirm == 'y':
+            # placeholder - will get replaced with meal_details() function
+            os.system('cls')
+            meal_details(meals.index(recommendation)+1)
+            input('Press Enter when done......')
+            quit()
+
+        # When the subset of meals is empty, need to get another option
+        if not subset:
+            os.system('cls')
+            print("There are no more meals with {} left.".format(protein))
+            print("Maybe you'd prefer something else?")
+            input("Press Enter to continue...")
+            get_recommendation()
+
+        # update ticker
+        ticker += 1
+
 
 # Option 2 - Add a New Meal
 def add_meal():
@@ -184,13 +230,11 @@ def view_meals():
 
     if choice == 0:
         main_menu()
-    elif choice -1:
+    elif choice == -1:
         del_meal()
     else:
-        view_meals()
-    ### Need to create this function, will take the meal number from above and return details of meal in a nice format
-    # else:
-        # meal_details(choice-1)
+        os.system('cls')
+        meal_details(choice)
 
 def del_meal():
     '''Pulls up a numbered list of meals and then allows you to delete based on number.'''
@@ -200,14 +244,18 @@ def del_meal():
     f = open('meals.pkl', 'rb')
 
     meals = pickle.load(f)
+    os.system('cls')
 
-    print("Here are the meals you have saved:\n")
+    print("Delete a meal? Which would you like to delete:\n")
 
     for i, meal in enumerate(meals):
         print('{}: {}'.format(i + 1, meal['name']))
 
     print('--------')
     meal_num = int(input("Enter the number of the meal you would like to delete (press 0 to exit): "))
+
+    if meal_num == 0:
+        main_menu()
 
     confirm = input("Delete meal number {}? This cannot be undone, are you sure? (y/n)".format(meal_num)).lower()
 
@@ -225,9 +273,28 @@ def del_meal():
 
     main_menu()
 
-def meal_details(meal_num):
+def meal_details(num):
     '''This function takes in the number of a meal (from the menus), and returns the details of the meal in a 
     nice, readable format. Ingredients first followed by instructions.'''
+    # Load meals
+    import pickle
+    f = open('meals.pkl', 'rb')
+    meals = pickle.load(f)
+
+    # Print name of meal
+    print(meals[num - 1]['name'].title())
+    print('------------------------------------')
+
+    # Print ingredients, followed by instructions (like in cookbooks)
+    for x, y in meals[num - 1]['ingredients'].items():
+        print("{} {}".format(y, x))
+
+    # Separator
+    print('------------------------------------')
+
+    # Instructions
+    for x, y in meals[num - 1]['instructions'].items():
+        print('{}: {}'.format(x, y))
 
 
 
