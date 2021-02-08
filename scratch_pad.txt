@@ -1,0 +1,33 @@
+Current plan:
+[X] - add 12-15 meals for a starting point
+[X] - meal_recommender() function - get this working
+	[X] - need to play around with the subsetting part in a notebook...seems like I'm creating an empty list
+		after selecting the random meal
+[X] - meal_details() function - create function that prints out a formatted version of meal's instructions
+
+Notes on next steps/things to add.
+- change/make adjustments to meals details
+- view meals: will need grouping methods to keep from a giant list, hundreds long
+	something like: 1 - view all meals, 2 - view by protein source, 3 - view by cuisine, 4 - view by tags
+- meal_recommendation(): 
+	[X] replace the if/elif part with a while loop
+	[ ] start by asking: want to choose by food, cuisine, or another tag?
+	[ ] not sure how to best end the program after someone accesses the meal details
+- Error handling will be a big part of the next stage: right now only works bc I know what to enter
+- automate scraping some meals to build sample database more quickly
+- print meal to file?
+
+Troubleshooting:
+- when selecting protein, need a better selector method: ex - the risotto came up for "chicken" protein.
+	but doesn't have chicken in it....it does list "chicken broth" as an ingredient though
+- the formatting of the ingredients needs to be cleaned up someone. Have issues like:
+	'1, sliced or diced mango' for the better than takeout chicken for example
+
+-----
+App Development:
+[ ] Work through the Apple app tutorials
+	- refer to the Swift PDF (saved in folder) as needed for add'l info
+	[ ] install Xcode on Mac
+		- Xcode has Swift "playgrounds" where you can just try out code without needing to build a whole app
+		- check out this intro: https://learnappmaking.com/xcode-tutorial/
+	[ ]  find Swift videos/tutorials
