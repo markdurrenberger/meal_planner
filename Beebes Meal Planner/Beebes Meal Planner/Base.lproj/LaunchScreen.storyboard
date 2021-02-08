@@ -16,24 +16,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mYV-ay-oVL">
-                                <rect key="frame" x="122" y="731" width="170" height="4"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEp-jT-4le">
-                                <rect key="frame" x="137" y="743" width="141" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Beebes Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Epd-XN-Hfy">
-                                <rect key="frame" x="-232" y="142" width="879" height="469"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="XTJ-cJ-SwP" userLabel="Main Stack">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IoI-iI-3g8" userLabel="Top">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="127"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OxD-dA-Wc3">
+                                        <rect key="frame" x="0.0" y="127" width="414" height="564"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Beebes Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Epd-XN-Hfy">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="519"/>
+                                            </imageView>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progress="0.65000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="mYV-ay-oVL">
+                                                <rect key="frame" x="122" y="519" width="170" height="4"/>
+                                            </progressView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEp-jT-4le">
+                                                <rect key="frame" x="136.5" y="523" width="141" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Epd-XN-Hfy" firstAttribute="leading" secondItem="OxD-dA-Wc3" secondAttribute="leading" id="57Z-x5-ypn"/>
+                                            <constraint firstItem="mYV-ay-oVL" firstAttribute="top" secondItem="Epd-XN-Hfy" secondAttribute="bottom" id="jE1-gX-yaz"/>
+                                            <constraint firstAttribute="trailing" secondItem="Epd-XN-Hfy" secondAttribute="trailing" id="jPY-4h-qck"/>
+                                            <constraint firstItem="Epd-XN-Hfy" firstAttribute="top" secondItem="OxD-dA-Wc3" secondAttribute="top" id="pI7-Tv-LrQ"/>
+                                            <constraint firstItem="Epd-XN-Hfy" firstAttribute="centerX" secondItem="OxD-dA-Wc3" secondAttribute="centerX" id="zHp-Yu-nKv"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQo-SU-xYC" userLabel="Bottom">
+                                        <rect key="frame" x="0.0" y="691" width="414" height="127"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.89411764705882346" green="0.73333333333333328" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="XTJ-cJ-SwP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="63Y-zJ-NoT"/>
+                            <constraint firstItem="XTJ-cJ-SwP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Yms-pF-Xch"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XTJ-cJ-SwP" secondAttribute="bottom" id="nbG-Ku-Pl1"/>
+                            <constraint firstItem="XTJ-cJ-SwP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="pvV-Xx-n63"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
